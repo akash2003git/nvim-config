@@ -35,7 +35,7 @@ return {
         "query",
         "vimdoc",
         "c",
-        "python"
+        "python",
       },
       incremental_selection = {
         enable = true,

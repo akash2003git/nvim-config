@@ -16,5 +16,5 @@ return {
       pre_hook = ts_context_commentstring.create_pre_hook(),
     })
   end,
-  -- use "gc" followed by a vim motion to comment 
+  -- use "gc" followed by a vim motion to comment
 }

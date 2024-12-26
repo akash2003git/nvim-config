@@ -18,6 +18,15 @@ return {
 
     local keymap = vim.keymap -- for conciseness
 
+    -- Disable inline diagnostics (virtual text)
+    vim.diagnostic.config({
+      virtual_text = false, -- Disable inline diagnostic text
+      signs = true, -- Keep diagnostic symbols in the gutter
+      underline = true, -- Keep underlines for errors and warnings
+      update_in_insert = false, -- Disable updates in insert mode
+      severity_sort = true, -- Sort diagnostics by severity
+    })
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)

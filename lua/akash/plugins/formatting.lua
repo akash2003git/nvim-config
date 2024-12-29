@@ -5,6 +5,17 @@ return {
     local conform = require("conform")
 
     conform.setup({
+      -- formatters = {
+      --   prettier = {
+      --     args = function(ctx)
+      --       -- Ensure ctx.filename is not nil
+      --       if ctx.filename and vim.endswith(ctx.filename, ".ejs") then
+      --         return { "--stdin-filepath", "$FILENAME", "--parser", "html" }
+      --       end
+      --       return { "--stdin-filepath", "$FILENAME" }
+      --     end,
+      --   },
+      -- },
       formatters_by_ft = {
         javascript = { "prettier" },
         typescript = { "prettier" },

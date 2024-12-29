@@ -6,6 +6,9 @@ return {
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
+    -- vim.treesitter.language.register("html", "ejs")
+    -- vim.treesitter.language.register("javascript", "ejs")
+
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
       highlight = {

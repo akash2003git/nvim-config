@@ -5,6 +5,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
+    { "jose-elias-alvarez/null-ls.nvim" },
   },
   config = function()
     -- import lspconfig plugin
@@ -16,6 +17,9 @@ return {
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+    -- import null-ls
+    local null_ls = require("null-ls")
+
     local keymap = vim.keymap -- for conciseness
 
     -- Disable inline diagnostics (virtual text)
@@ -25,6 +29,23 @@ return {
       underline = true, -- Keep underlines for errors and warnings
       update_in_insert = false, -- Disable updates in insert mode
       severity_sort = true, -- Sort diagnostics by severity
+    })
+
+    -- Set up Prettier with null-ls
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.prettier.with({
+          extra_args = { "--plugin", "/usr/lib/node_modules/prettier-plugin-ejs/index.js" }, -- Path to the plugin
+        }),
+      },
+    })
+
+    -- Format on save for .ejs files
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = { "*.ejs" },
+      callback = function()
+        vim.lsp.buf.format({ async = true })
+      end,
     })
 
     vim.api.nvim_create_autocmd("LspAttach", {

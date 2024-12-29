@@ -1,4 +1,8 @@
 vim.cmd("let g:netrw_liststyle = 3")
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.ejs",
+  command = "set filetype=html",
+})
 
 local opt = vim.opt -- for conciseness
 
@@ -34,4 +38,3 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
-

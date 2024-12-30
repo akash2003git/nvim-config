@@ -1,8 +1,8 @@
 vim.cmd("let g:netrw_liststyle = 3")
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*.ejs",
-  command = "set filetype=html",
-})
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--   pattern = "*.ejs",
+--   command = "set filetype=html",
+-- })
 
 local opt = vim.opt -- for conciseness
 

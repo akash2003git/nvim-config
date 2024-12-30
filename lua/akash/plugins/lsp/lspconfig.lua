@@ -150,11 +150,6 @@ return {
           filetypes = { "c", "cpp", "objc", "objcpp" },
         })
       end,
-      html = function()
-        lspconfig.html.setup({
-          filetypes = { "html", "ejs" },
-        })
-      end,
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
@@ -171,7 +166,7 @@ return {
             },
           },
         })
-        -- vim.filetype.add({ extension = { ejs = "ejs" } })
+        vim.filetype.add({ extension = { ejs = "ejs" } })
       end,
     })
   end,

@@ -4,7 +4,7 @@ return {
     require("colorizer").setup({
       "html", -- Enable for HTML
       "css", -- Enable for CSS
-      "javascript", -- Enable for JavaScript
+      -- "javascript", -- Enable for JavaScript
     }, {
       mode = "background", -- Display colors in the foreground text
       css = { rgb_fn = true }, -- Enable rgb(), rgba(), and hsl() in CSS

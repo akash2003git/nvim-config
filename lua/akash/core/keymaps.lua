@@ -21,3 +21,12 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+keymap.set("n", "<Esc>", ":nohlsearch<CR>", { noremap = true, silent = true }) -- remove search highlights
+
+keymap.set(
+  "n",
+  "<leader>rr",
+  ":!> ~/Coding/a2z_dsa/output.txt && g++ % -o temp && ./temp < ~/Coding/a2z_dsa/input.txt > ~/Coding/a2z_dsa/output.txt<CR>",
+  { noremap = true, silent = true }
+) -- run cpp programs (DSA)

@@ -5,7 +5,10 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    -- { "jose-elias-alvarez/null-ls.nvim" },
+    {
+      "nvimtools/none-ls.nvim",
+    },
   },
   config = function()
     -- import lspconfig plugin
@@ -19,6 +22,7 @@ return {
 
     -- import null-ls
     local null_ls = require("null-ls")
+    -- local null_ls = require("none-ls")
 
     local keymap = vim.keymap -- for conciseness
 
@@ -102,11 +106,23 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    -- for type, icon in pairs(signs) do
+    --   local hl = "DiagnosticSign" .. type
+    --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    -- end
+
+    -- temporary changes
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          error = " ",
+          warn = " ",
+          hint = "󰠠 ",
+          info = " ",
+        },
+      },
+    })
 
     mason_lspconfig.setup_handlers({
       -- default handler for installed servers

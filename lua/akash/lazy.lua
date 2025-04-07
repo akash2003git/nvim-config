@@ -11,7 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "akash.plugins" }, { import = "akash.plugins.lsp" } }, {
+require("lazy").setup({
+  { import = "akash.plugins" },
+  { import = "akash.plugins.lsp" },
+  { "nvimtools/none-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- Ensure none-ls is installed
+}, {
   checker = {
     enabled = true,
     notify = false,

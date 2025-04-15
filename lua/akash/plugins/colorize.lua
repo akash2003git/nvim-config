@@ -2,13 +2,18 @@ return {
   "norcalli/nvim-colorizer.lua",
   config = function()
     require("colorizer").setup({
-      "html", -- Enable for HTML
-      "css", -- Enable for CSS
-      -- "javascript", -- Enable for JavaScript
+      "html",
+      "css",
+      -- "javascript",
+      -- "javascriptreact",
     }, {
-      mode = "background", -- Display colors in the foreground text
-      css = { rgb_fn = true }, -- Enable rgb(), rgba(), and hsl() in CSS
-      html = { names = false }, -- Disable color names in HTML to focus on code-based colors
+      mode = "background",
+      css = { rgb_fn = true },
+      html = { names = false },
+      -- javascriptreact = {
+      --   tailwind = true,
+      --   enable_html = true,
+      -- },
       vim.keymap.set("n", "<leader>co", ":ColorizerToggle<CR>", { noremap = true, silent = true }),
     })
   end,

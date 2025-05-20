@@ -105,24 +105,24 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
-    -- (not in youtube nvim video)
-    -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    -- (not in jose's video)
+    -- local signs = { Error = "  ", Warn = "  ", Hint = " 󰠠 ", Info = "  " }
     -- for type, icon in pairs(signs) do
     --   local hl = "DiagnosticSign" .. type
     --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     -- end
 
     -- temporary changes
-    vim.diagnostic.config({
-      signs = {
-        text = {
-          error = " ",
-          warn = " ",
-          hint = "󰠠 ",
-          info = " ",
-        },
-      },
-    })
+    -- vim.diagnostic.config({
+    --   signs = {
+    --     text = {
+    --       error = " ",
+    --       warn = " ",
+    --       hint = "󰠠 ",
+    --       info = " ",
+    --     },
+    --   },
+    -- })
 
     mason_lspconfig.setup({
       -- default handler for installed servers
@@ -164,6 +164,18 @@ return {
         lspconfig["clangd"].setup({
           capabilities = capabilities,
           filetypes = { "c", "cpp", "objc", "objcpp" },
+        })
+      end,
+      ["jdtls"] = function()
+        lspconfig["jdtls"].setup({
+          capabilities = capabilities,
+          filetypes = { "java" },
+        })
+      end,
+      ["pyright"] = function()
+        lspconfig["pyright"].setup({
+          capabilities = capabilities,
+          filetypes = { "py" },
         })
       end,
       ["lua_ls"] = function()

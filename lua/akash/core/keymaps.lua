@@ -24,7 +24,14 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 keymap.set(
   "n",
-  "<leader>rr",
+  "<leader>cpp",
   ":!> ~/Coding/a2z_dsa/output.txt && g++ % -o temp && ./temp < ~/Coding/a2z_dsa/input.txt > ~/Coding/a2z_dsa/output.txt<CR>",
   { noremap = true, silent = true }
 ) -- run cpp programs (DSA)
+
+keymap.set(
+  "n",
+  "<leader>java",
+  ":!> ~/Coding/a2z_dsa/output.txt && javac % && java %:r < ~/Coding/a2z_dsa/input.txt > ~/Coding/a2z_dsa/output.txt<CR>",
+  { noremap = true, silent = true }
+) -- run java programs (DSA)

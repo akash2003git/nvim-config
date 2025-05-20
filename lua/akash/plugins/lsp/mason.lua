@@ -31,13 +31,14 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        -- "svelte",
         "lua_ls",
-        -- "graphql",
         "emmet_ls",
         "prismals",
         "pyright",
         "clangd",
+        "jdtls",
+        -- "svelte",
+        -- "graphql",
       },
     })
 
@@ -45,9 +46,9 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
-        "isort", -- python formatter
         "black", -- python formatter
-        "clang-format",
+        "clang-format", -- cpp formatter
+        -- "isort", -- python formatter
         --"pylint",
         --"eslint_d",
       },

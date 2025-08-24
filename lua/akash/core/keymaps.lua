@@ -29,9 +29,17 @@ keymap.set(
   { noremap = true, silent = true }
 ) -- run cpp programs (DSA)
 
-keymap.set(
+-- keymap.set(
+--   "n",
+--   "<leader>java",
+--   ":!> ~/Coding/a2z_dsa/output.txt && javac % && java %:r < ~/Coding/a2z_dsa/input.txt > ~/Coding/a2z_dsa/output.txt<CR>",
+--   { noremap = true, silent = true }
+-- ) -- run java programs (DSA)
+
+-- Run Java program in Neovim with <leader>java
+vim.keymap.set(
   "n",
   "<leader>java",
-  ":!> ~/Coding/a2z_dsa/output.txt && javac % && java %:r < ~/Coding/a2z_dsa/input.txt > ~/Coding/a2z_dsa/output.txt<CR>",
+  ":!javac % && java %:t:r < /home/akash/Coding/java_dsa/input.txt > /home/akash/Coding/java_dsa/output.txt<CR>",
   { noremap = true, silent = true }
-) -- run java programs (DSA)
+)

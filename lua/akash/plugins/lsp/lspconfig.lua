@@ -26,6 +26,12 @@ return {
 
     local keymap = vim.keymap -- for conciseness
 
+    -- helper to get mason install path for a server
+    local function mason_bin_path(pkgname, binname)
+      local path = vim.fn.stdpath("data") .. "/mason/packages/" .. pkgname .. "/" .. binname
+      return path
+    end
+
     -- Disable inline diagnostics (virtual text)
     vim.diagnostic.config({
       virtual_text = false, -- Disable inline diagnostic text
@@ -40,6 +46,9 @@ return {
       sources = {
         null_ls.builtins.formatting.prettier.with({
           extra_args = { "--plugin", "/usr/lib/node_modules/prettier-plugin-ejs/index.js" }, -- Path to the plugin
+        }),
+        null_ls.builtins.formatting.csharpier.with({
+          command = vim.fn.stdpath("data") .. "/mason/bin/csharpier", -- optional: path or just "csharpier"
         }),
       },
     })
@@ -195,6 +204,22 @@ return {
           },
         })
         -- vim.filetype.add({ extension = { ejs = "ejs" } })
+      end,
+
+      ["omnisharp"] = function()
+        local data_path = vim.fn.stdpath("data")
+        local omni_bin = data_path .. "/mason/packages/omnisharp/OmniSharp"
+
+        lspconfig.omnisharp.setup({
+          cmd = { omni_bin, "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+          capabilities = capabilities,
+          settings = {
+            omnisharp = {
+              useModernNet = true,
+              organizeImportsOnFormat = true,
+            },
+          },
+        })
       end,
     })
   end,

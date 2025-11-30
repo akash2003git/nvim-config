@@ -20,6 +20,11 @@ return {
 
     local luasnip = require("luasnip")
 
+    -- load vscode snippets (friendly-snippets)
+    require("luasnip.loaders.from_vscode").lazy_load()
+    -- load our custom Lua snippets in lua/akash/snippets
+    require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/lua/akash/snippets" })
+
     local lspkind = require("lspkind")
 
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
@@ -45,7 +50,7 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "nvim_lsp"},
+        { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
@@ -57,6 +62,27 @@ return {
           maxwidth = 50,
           ellipsis_char = "...",
         }),
+      },
+
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          -- prefer luasnip over other suggestions sometimes
+          function(entry1, entry2)
+            if entry1.source.name == "luasnip" and entry2.source.name ~= "luasnip" then
+              return true
+            elseif entry2.source.name == "luasnip" and entry1.source.name ~= "luasnip" then
+              return false
+            end
+          end,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
       },
     })
   end,

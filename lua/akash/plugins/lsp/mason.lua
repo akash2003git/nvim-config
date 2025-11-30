@@ -37,6 +37,7 @@ return {
         "pyright",
         "clangd",
         "jdtls",
+        "omnisharp", -- .NET 6+ variant (dotnet required)
         -- "svelte",
         -- "graphql",
       },
@@ -48,6 +49,8 @@ return {
         "stylua", -- lua formatter
         "black", -- python formatter
         "clang-format", -- cpp formatter
+        "csharpier", -- code formatter for C#
+        "netcoredbg", -- debugger for .NET (used with nvim-dap)
         -- "isort", -- python formatter
         --"pylint",
         --"eslint_d",
